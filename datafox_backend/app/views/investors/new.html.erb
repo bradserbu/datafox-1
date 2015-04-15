@@ -1,0 +1,30 @@
+<h1> Create a new investor </h1>
+
+<%= form_for :investor, url: investors_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </p>
+  <p>
+    <%= f.label :category %><br>
+    <%= f.text_field :category %><br>
+  </p>
+  <p>
+    <%= f.label :location %><br>
+    <%= f.text_field :location %><br>
+  </p>
+  <p>
+    <%= f.label :field %><br>
+    <%= f.text_field :field %><br>
+  </p>
+  <p>
+    <%= f.label :detail %><br>
+    <%= f.text_field :detail %><br>
+  </p>
+
+  <p>
+  	<%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', investors_index_path %>

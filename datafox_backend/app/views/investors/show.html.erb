@@ -1,0 +1,32 @@
+<h1>Investor</h1>
+<p>
+  <strong> Name: </strong>
+  <%= @investor.name %>
+</p>
+
+<p>
+  <strong> Category: </strong>
+  <%= @investor.category %>
+</p>
+
+<p>
+  <strong> Location: </strong>
+  <%= @investor.location %>
+</p>
+
+<p>
+  <strong> Field: </strong>
+  <%= @investor.field %>
+</p>
+
+<p>
+  <strong> Detail: </strong>
+  <%= @investor.detail %>
+</p>
+
+<p>
+  <strong> Investments: </strong>
+  <%= link_to 'Investments', companies_index_path %>
+</p>
+
+<%= link_to 'Back', investors_index_path %>
