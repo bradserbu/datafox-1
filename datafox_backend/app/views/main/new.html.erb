@@ -1,2 +1,32 @@
 <h1> Create a new company </h1>
 
+<%= form_for :company do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </p>
+  <p>
+    <%= f.label :category %><br>
+    <%= f.text_field :category %><br>
+  </p>
+  <p>
+    <%= f.label :year %><br>
+    <%= f.text_field :year %><br>
+  </p>
+  <p>
+    <%= f.label :stage %><br>
+    <%= f.text_field :stage %><br>
+  </p>
+  <p>
+    <%= f.label :field %><br>
+    <%= f.text_field :field %><br>
+  </p>
+  <p>
+    <%= f.label :detail %><br>
+    <%= f.text_field :detail %><br>
+  </p>
+
+  <p>
+  	<%= f.submit %>
+  </p>
+<% end %>

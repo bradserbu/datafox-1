@@ -4,6 +4,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :name
       t.string :type
       t.integer :year
+      t.string :stage
       t.string :field
       t.text :detail
 
