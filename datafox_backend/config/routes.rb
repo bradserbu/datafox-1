@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'companies/filter'
 
   get 'companies/show'
+
+  get 'investors/show'
+
+  get 'investors/index'
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :companies
 
+  resources :investors
   # Example resource route with options:
   #   resources :products do
   #     member do

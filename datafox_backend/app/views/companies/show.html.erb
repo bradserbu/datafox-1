@@ -1,4 +1,4 @@
-<h1>Current Company</h1>
+<h1>Company</h1>
 <p>
   <strong> Name: </strong>
   <%= @company.name %>
@@ -27,6 +27,12 @@
 <p>
   <strong> Detail: </strong>
   <%= @company.detail %>
+</p>
+
+
+<p>
+  <strong> Investors: </strong>
+  <%= link_to 'Who invested', investors_index_path %>
 </p>
 
 <%= link_to 'Back', companies_index_path %>
