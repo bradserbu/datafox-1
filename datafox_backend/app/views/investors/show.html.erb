@@ -26,7 +26,10 @@
 
 <p>
   <strong> Investments: </strong>
-  <%= link_to 'Investments', companies_index_path %>
+  <% @investor.companies.each do |company| %>
+    <p><%= link_to company.name, company_path(company) %></p>
+  <% end %>
 </p>
+
 
 <%= link_to 'Back', investors_index_path %>
