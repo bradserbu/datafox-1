@@ -13,9 +13,8 @@ class KrItem(scrapy.Item):
     category = scrapy.Field()
     title = scrapy.Field()
     author = scrapy.Field()
-    date_created = scrapy.Field()
+    created_at = scrapy.Field()
     contents = scrapy.Field()
     url = scrapy.Field()    
-    desc = scrapy.Field()
 
 
