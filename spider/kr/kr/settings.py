@@ -13,5 +13,8 @@ BOT_NAME = 'kr'
 SPIDER_MODULES = ['kr.spiders']
 NEWSPIDER_MODULE = 'kr.spiders'
 
+ITEM_PIPELINES = {'kr.pipelines.KrPipeline': 800,}
+
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'kr (+http://www.yourdomain.com)'
