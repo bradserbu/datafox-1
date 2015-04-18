@@ -6,6 +6,11 @@ class CompaniesController < ApplicationController
   def filter
   	
   end
+
+  def similar
+    @companiesCommander = CompaniesCommander.new
+    @companies = @companiesCommander.getComapnyScoresByTheCompany(params[:id])
+  end
   
   def new
     

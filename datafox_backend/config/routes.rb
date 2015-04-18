@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'companies/filter'
 
+  post 'companies/similar'
+
   get 'companies/show'
 
   get 'investors/show'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   get 'investors/index'
 
   get 'main/index'
+
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
