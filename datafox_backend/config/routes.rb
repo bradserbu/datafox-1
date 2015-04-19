@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   get 'companies/index'
 
-  get 'companies/filter'
-
-  post 'companies/similar'
-
   get 'companies/show'
 
   get 'investors/show'
@@ -26,7 +22,11 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :companies
+  resources :companies do 
+    member do
+      get 'search'
+    end
+  end
 
   resources :investors
   # Example resource route with options:
