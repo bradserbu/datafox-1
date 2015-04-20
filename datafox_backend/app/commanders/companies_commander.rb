@@ -1,11 +1,11 @@
 class CompaniesCommander
-	def getComapnyScoresByTheCompany(:id)
+	def getComapnyScoresByTheCompany(name)
     @comapnies = Company.all
-    @companyA = Company.find(params[:id])
+    @theCompany = Company.find_by_name(name)
 
-    AfieldSet = Set.new
-    @companyA.fields.each do | field | 
-      AfieldSet << field.name
+    theFieldSet = Set.new
+    @theCompany.fields.each do | field | 
+      theFieldSet << field.name
     end
     @rankedCompanies = Array.new
     #calculate other company scores to company A
@@ -17,28 +17,27 @@ class CompaniesCommander
 
       score = 0
 
-      if (fieldSet & AfieldSet != nil)
-        if (fieldSet - AfieldSet == nil)
-          score += 0.5 
-        end else
-          score += 0.3
-        end
-      end
+      
+      if (fieldSet - theFieldSet == nil)
+        score += 0.5 
+      else
+        score += 0.3
+      end if (fieldSet & theFieldSet != nil)
+      
+      score += 0.1 if (company.category == @theCompany.category)
 
-      if (company.category == @companyA.category)
-        score += 0.1
+      score += 0.025 * (4 - (@theCompany.stage - company.stage).abs)
 
-      score += 0.025 * (4 - (@companyA.stage - company.stage).abs)
+      score += 0.2 if (@theCompany.investor.level == company.investor.level)
 
-      if (@companyA.investor.level == company.investor.level)
-        score += 0.2
-      if (@companyA.founder.level == company.founder.level)
-        score += 0.1
+      score += 0.1 if (@theCompany.founder.level == company.founder.level)
 
       rankedCompany = Struct.new(company, score)
       @rankedCompanies << rankedCompany
     end
 
     @rankedCompanies.sort_by { |rankedCompany| rankedCompany.score }
+
+    return @rankedCompanies
   end
 end

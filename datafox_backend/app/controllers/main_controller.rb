@@ -5,4 +5,9 @@ class MainController < ApplicationController
 
   end
   
+  def similarCompanies 
+    companiesCommander = CompaniesCommander.new
+    @rankedCompanies = companiesCommander.getComapnyScoresByTheCompany(params[:name])
+  end
+
 end

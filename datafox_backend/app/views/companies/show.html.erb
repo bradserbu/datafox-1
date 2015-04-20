@@ -21,7 +21,9 @@
 
 <p>
   <strong> Fields: </strong>
-  <%= @company.fields %>
+  <% @company.fields.each do |field| %>
+    <p><%= field.name %></p>
+  <% end %>
 </p>
 
 <p>

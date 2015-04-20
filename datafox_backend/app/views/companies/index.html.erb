@@ -17,7 +17,13 @@
             <td> <%= company.category %> </td>
             <td> <%= company.year %> </td>
             <td> <%= company.stage %> </td>
-            <td> <%= company.fields %> </td>
+            <td> 
+                <% begin %>
+                    <%= CompanyField.find(company.field_id) %> 
+                <% rescue ActiveRecord::RecordNotFound => e %>
+                    <%= nil %>
+                <% end %>
+            </td>
             <td> <%= company.detail %> </td>
             <td> <%= link_to 'Show', company_path(company) %> </td>
             <td> <%= link_to 'Edit', edit_company_path(company) %> </td>

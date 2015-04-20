@@ -1,13 +1,9 @@
 class CompaniesController < ApplicationController
   def index
     @companies = Company.all
+    
   end
 
-  def similar
-    companiesCommander = CompaniesCommander.new
-    @companies = companiesCommander.getComapnyScoresByTheCompany(params[:id])
-  end
-  
   def new
     
   end
@@ -19,6 +15,7 @@ class CompaniesController < ApplicationController
   def create
     investorArr = Array.new
     @investors = company_params[:investors].split(/[\s,]+/)
+    @fields = company_params[:fields].split(/[\s,]+/)
     @investors.each do |investor| 
       find_investor = Investor.find_by_name(investor)
       if find_investor.nil?
@@ -31,7 +28,22 @@ class CompaniesController < ApplicationController
       end
     end
 
-    @company = build_company(investorArr)
+    fieldArr = Array.new
+    @fields.each do |field| 
+      find_field = Investor.find_by_name(field)
+      if find_field.nil?
+        field = Field.new
+        field.name = investor
+        field.save
+        fieldArr << field
+      else
+        fieldArr << find_field
+      end
+    end
+
+
+
+    @company = build_company(investorArr, fieldArr)
     if @company.save
     	redirect_to @company
     else
@@ -61,13 +73,13 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def build_company(investorArr)
+    def build_company(investorArr, fieldArr)
       company = Company.new
       company.name = company_params[:name]
       company.category = company_params[:category]
       company.year = company_params[:year]
       company.stage = company_params[:stage]
-      company.field = company_params[:fields]
+      company.field = fieldArr
       company.detail = company_params[:detail]
       company.investors = investorArr
       return company

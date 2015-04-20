@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'team/index'
-
   get 'companies/index'
 
   get 'companies/show'
@@ -11,6 +9,8 @@ Rails.application.routes.draw do
   get 'investors/index'
 
   get 'main/index'
+
+  get 'main/similarCompanies' 
 
   # See how all your routes lay out with "rake routes".
 
@@ -24,13 +24,9 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :companies do 
-    member do
-      get 'similar'
-    end
-  end
-
+  resources :companies 
   resources :investors
+  resources :founders
   # Example resource route with options:
   #   resources :products do
   #     member do

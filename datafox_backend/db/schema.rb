@@ -11,20 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420094237) do
+ActiveRecord::Schema.define(version: 20150420153318) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
     t.integer  "year"
-    t.string   "fields"
     t.text     "detail"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "stage"
     t.integer  "investor_id"
+    t.integer  "field_id"
   end
 
+  add_index "companies", ["field_id"], name: "index_companies_on_field_id"
   add_index "companies", ["investor_id"], name: "index_companies_on_investor_id"
 
   create_table "company_fields", force: :cascade do |t|
@@ -58,18 +59,5 @@ ActiveRecord::Schema.define(version: 20150420094237) do
   end
 
   add_index "investors", ["company_id"], name: "index_investors_on_company_id"
-
-  create_table "vcs", force: :cascade do |t|
-    t.string   "name"
-    t.string   "location"
-    t.string   "category"
-    t.string   "field"
-    t.text     "detail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "company_id"
-  end
-
-  add_index "vcs", ["company_id"], name: "index_vcs_on_company_id"
 
 end
