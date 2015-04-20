@@ -7,7 +7,7 @@ class MainController < ApplicationController
   
   def similarCompanies 
     companiesCommander = CompaniesCommander.new
-    @rankedCompanies = companiesCommander.getComapnyScoresByTheCompany(params[:name])
+    @rankedCompanies = companiesCommander.getComapnyScoresByTheCompany(params[:similar])
   end
 
 end
