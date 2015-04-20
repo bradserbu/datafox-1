@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416154346) do
+ActiveRecord::Schema.define(version: 20150420094237) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
     t.integer  "year"
-    t.string   "field"
+    t.string   "fields"
     t.text     "detail"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 20150416154346) do
   end
 
   add_index "companies", ["investor_id"], name: "index_companies_on_investor_id"
+
+  create_table "company_fields", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "company_fields", ["company_id"], name: "index_company_fields_on_company_id"
+
+  create_table "founders", force: :cascade do |t|
+    t.string   "name"
+    t.text     "background"
+    t.integer  "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "category"
+  end
 
   create_table "investors", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150416154346) do
     t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "level"
   end
 
   add_index "investors", ["company_id"], name: "index_investors_on_company_id"

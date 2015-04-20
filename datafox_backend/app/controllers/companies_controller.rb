@@ -3,13 +3,9 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
-  def filter
-  	
-  end
-
   def similar
-    @companiesCommander = CompaniesCommander.new
-    @companies = @companiesCommander.getComapnyScoresByTheCompany(params[:id])
+    companiesCommander = CompaniesCommander.new
+    @companies = companiesCommander.getComapnyScoresByTheCompany(params[:id])
   end
   
   def new
@@ -21,21 +17,21 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @vc_array = Array.new
+    investorArr = Array.new
     @investors = company_params[:investors].split(/[\s,]+/)
     @investors.each do |investor| 
-      @find_investor = Investor.find_by_name(investor)
-      if @find_investor.nil?
-        @investor = Investor.new
-        @investor.name = investor
-        @investor.save
-        @vc_array << @investor
+      find_investor = Investor.find_by_name(investor)
+      if find_investor.nil?
+        investor = Investor.new
+        investor.name = investor
+        investor.save
+        investorArr << investor
       else
-        @vc_array << @find_investor
+        investorArr << find_investor
       end
     end
 
-    @company = build_company(@vc_array)
+    @company = build_company(investorArr)
     if @company.save
     	redirect_to @company
     else
@@ -65,20 +61,20 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def build_company(vc_array)
-      @company = Company.new
-      @company.name = company_params[:name]
-      @company.category = company_params[:category]
-      @company.year = company_params[:year]
-      @company.stage = company_params[:stage]
-      @company.field = company_params[:field]
-      @company.detail = company_params[:detail]
-      @company.investors = vc_array
-      return @company
+    def build_company(investorArr)
+      company = Company.new
+      company.name = company_params[:name]
+      company.category = company_params[:category]
+      company.year = company_params[:year]
+      company.stage = company_params[:stage]
+      company.field = company_params[:fields]
+      company.detail = company_params[:detail]
+      company.investors = investorArr
+      return company
     end
 
   private
   	def company_params
-  	  params.require(:company).permit(:name, :category, :year, :stage, :field, :detail, :investors)
+  	  params.require(:company).permit(:name, :category, :year, :stage, :fields, :detail, :investors)
   	end
 end

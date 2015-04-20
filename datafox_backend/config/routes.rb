@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'team/index'
+
   get 'companies/index'
 
   get 'companies/show'
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :companies do 
     member do
-      get 'search'
+      get 'similar'
     end
   end
 
