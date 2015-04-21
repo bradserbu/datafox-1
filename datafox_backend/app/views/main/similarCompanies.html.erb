@@ -1,1 +1,19 @@
 <h1> Simialr Companies </h1>
+
+<% @rankedCompanies.each do |rankedCompany| %>
+        <tr>
+            <td> <%= rankedCompany.company.name %> </td>
+            <td> <%= rankedCompany.company.category %> </td>
+            <td> <%= rankedCompany.company.year %> </td>
+            <td> <%= rankedCompany.company.stage %> </td>
+            <td> <%= rankedCompany.score %> </td>
+            <td> 
+                <% begin %>
+                    <%= CompanyField.find(rankedCompany.company.field_id) %> 
+                <% rescue ActiveRecord::RecordNotFound => e %>
+                    <%= nil %>
+                <% end %>
+            </td>
+        </tr>
+        <div>
+    <% end %>

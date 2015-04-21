@@ -21,7 +21,6 @@ class CompaniesCommander
       theFieldSet << field.name
     end
 
-
     #calculate other company scores to company A
     @comapnies.each do | company | 
       fieldSet = Set.new
@@ -30,7 +29,6 @@ class CompaniesCommander
       end
 
       score = 0
-
       
       if (fieldSet - theFieldSet == nil)
         score += 0.5 
