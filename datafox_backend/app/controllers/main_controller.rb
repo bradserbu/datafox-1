@@ -10,4 +10,8 @@ class MainController < ApplicationController
     @rankedCompanies = companiesCommander.getComapnyScoresByTheCompany(params[:similar])
   end
 
+  def filterCompanies
+    @filterCompanies = Company.filter(params)
+  end
+
 end

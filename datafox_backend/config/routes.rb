@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'main/similarCompanies' 
 
+  post 'main/filterCompanies'
+
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420153318) do
+ActiveRecord::Schema.define(version: 20150421071751) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150420153318) do
     t.string   "stage"
     t.integer  "investor_id"
     t.integer  "field_id"
+    t.string   "link"
   end
 
   add_index "companies", ["field_id"], name: "index_companies_on_field_id"

@@ -1,0 +1,28 @@
+<h1> Filter Companies </h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Year</th>
+    <th>Stage</th>
+    <th>Field</th>
+    <th>Detail</th>
+  </tr>
+  <% @filterCompanies.each do |company| %>
+    <tr>
+      <td> <%= company.name %> </td>
+      <td> <%= company.category %> </td>
+      <td> <%= company.year %> </td>
+      <td> <%= company.stage %> </td>
+        <td> 
+          <% begin %>
+            <%= CompanyField.find(company.field_id) %> 
+              <% rescue ActiveRecord::RecordNotFound => e %>
+                <%= nil %>
+            <% end %>
+        </td>
+        <td> <%= company.detail %> </td>
+      </tr>
+      <div></div>
+    <% end %>
+</table>
