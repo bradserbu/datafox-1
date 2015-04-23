@@ -26,5 +26,5 @@ class chuangYeBangSpider(CrawlSpider):
         company['geoLocation'] = response.xpath("//ul[@class='hh']/li[3]/text()").extract()
         company['stage'] = response.xpath("//ul[@class='hh']/li[4]/text()").extract()
         company['industry'] = response.xpath("//ul[@class='hh']/li[5]/text()").extract()
-        # company['basicInfo'] = response.xpath
+        company['basicInfo'] = response.xpath("//div[@class ='tzj_jjg_txt']/p[1]/text()").extract()
         return company
