@@ -14,7 +14,7 @@ import codecs
 class ChuangyebangPipeline(object):
     def __init__(self):
         # self.file = open('items.jl', 'wb')
-        self.file = codecs.open('companys.json', 'wb', encoding='utf-8')
+        self.file = codecs.open('companies.json', 'wb', encoding='utf-8')
 
     def process_item(self, item, spider):
         line = json.dumps(dict(item)) + "\n"
