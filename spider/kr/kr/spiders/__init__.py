@@ -25,5 +25,4 @@ class KrSpider(CrawlSpider):
         article['contents'] = response.xpath("//section[@class='article']/p/text()").extract()
         article['created_at'] = response.xpath("//time[@class='timeago']/@datetime").extract()
         article['url'] = response.url
-    	print "hrererererereafjaelskdfjadls;kj"
         return article
