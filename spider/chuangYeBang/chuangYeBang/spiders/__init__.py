@@ -16,7 +16,9 @@ class chuangYeBangSpider(CrawlSpider):
         "http://www.cyzone.cn/category/637/"
     ]
 
-    rules = [Rule(LinkExtractor(allow=['\/r\/\d+\/.*']), 'parse_company')]
+    rules = [Rule(LinkExtractor(allow=['\/r\/\d+\/.*']), 'parse_company'), 
+    Rule(LinkExtractor(allow=['\/category\/637\/index.*']))]
+    # rules = [Rule(LinkExtractor(allow=['\/category\/637\/index.*']), 'add_url')]
 
     def parse_company(self, response):
         company = ChuangyebangItem()
@@ -28,3 +30,10 @@ class chuangYeBangSpider(CrawlSpider):
         company['industry'] = response.xpath("//ul[@class='hh']/li[5]/text()").extract()
         company['basicInfo'] = response.xpath("//div[@class ='tzj_jjg_txt']/p[1]/text()").extract()
         return company
+
+    def add_url(self, response):
+        self.start_urls.append(response.url)
+
+        # return None
+
+        
