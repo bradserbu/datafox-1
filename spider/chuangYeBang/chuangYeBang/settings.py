@@ -13,5 +13,8 @@ BOT_NAME = 'chuangYeBang'
 SPIDER_MODULES = ['chuangYeBang.spiders']
 NEWSPIDER_MODULE = 'chuangYeBang.spiders'
 
+
+ITEM_PIPELINES = {'chuangYeBang.pipelines.ChuangyebangPipeline': 800,}
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'chuangYeBang (+http://www.yourdomain.com)'

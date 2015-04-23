@@ -9,6 +9,10 @@ import scrapy
 
 
 class ChuangyebangItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    companyName = scrapy.Field()
+    foundedIn = scrapy.Field()
+    website = scrapy.Field()
+    geoLocation = scrapy.Field()
+    stage = scrapy.Field()
+    industry = scrapy.Field()
+    basicInfo = scrapy.Field()  
