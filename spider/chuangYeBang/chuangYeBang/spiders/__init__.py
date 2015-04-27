@@ -31,9 +31,4 @@ class chuangYeBangSpider(CrawlSpider):
         company['basicInfo'] = response.xpath("//div[@class ='tzj_jjg_txt']/p[1]/text()").extract()
         return company
 
-    def add_url(self, response):
-        self.start_urls.append(response.url)
-
-        # return None
-
         
