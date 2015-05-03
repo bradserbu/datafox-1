@@ -16,7 +16,9 @@ class KrSpider(CrawlSpider):
         # "http://36kr.com/search?page=2&q="
     ]
 
-    rules = [Rule(LinkExtractor(allow=['\/p\/\d+\.html\?utm_source=site_search']), 'parse_article')]
+    rules = [Rule(LinkExtractor(allow=['\/p\/\d+\.html\?utm_source=site_search']), 'parse_article'),
+    Rule(LinkExtractor(allow=['\/search\?page=\d+.*']))]
+    # rules = [Rule(LinkExtractor(allow=['\/search\?page=\d+.*']), 'parse_article')]
 
     def parse_article(self, response):
     	article = KrItem()
@@ -25,5 +27,4 @@ class KrSpider(CrawlSpider):
         article['contents'] = response.xpath("//section[@class='article']/p/text()").extract()
         article['created_at'] = response.xpath("//time[@class='timeago']/@datetime").extract()
         article['url'] = response.url
-    	print "hrererererereafjaelskdfjadls;kj"
         return article

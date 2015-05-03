@@ -13,7 +13,7 @@ import codecs
 class KrPipeline(object):
     def __init__(self):
         # self.file = open('items.jl', 'wb')
-        self.file = codecs.open('items.json', 'wb', encoding='utf-8')
+        self.file = codecs.open('articles.json', 'wb', encoding='utf-8')
 
     def process_item(self, item, spider):
         line = json.dumps(dict(item)) + "\n"
