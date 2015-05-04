@@ -9,7 +9,7 @@ default: &default
   encoding: utf8
   reconnect: false
   database: datafox_production
-  pool: 5
+  pool: 10
   timeout: 5000
   username: root
   password: read4k
@@ -27,5 +27,12 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: datafox_production
+  pool: 10
+  timeout: 5000
+  username: root
+  password: read4k
+  host: localhost

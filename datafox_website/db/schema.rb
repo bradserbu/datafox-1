@@ -14,51 +14,51 @@
 ActiveRecord::Schema.define(version: 20150421071751) do
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name"
-    t.string   "category"
-    t.integer  "year"
-    t.text     "detail"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "stage"
-    t.integer  "investor_id"
-    t.integer  "field_id"
-    t.string   "link"
+    t.string   "name",        limit: 255
+    t.string   "category",    limit: 255
+    t.integer  "year",        limit: 4
+    t.text     "detail",      limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "stage",       limit: 255
+    t.integer  "investor_id", limit: 4
+    t.integer  "field_id",    limit: 4
+    t.string   "link",        limit: 255
   end
 
-  add_index "companies", ["field_id"], name: "index_companies_on_field_id"
-  add_index "companies", ["investor_id"], name: "index_companies_on_investor_id"
+  add_index "companies", ["field_id"], name: "index_companies_on_field_id", using: :btree
+  add_index "companies", ["investor_id"], name: "index_companies_on_investor_id", using: :btree
 
   create_table "company_fields", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.integer  "company_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "company_fields", ["company_id"], name: "index_company_fields_on_company_id"
+  add_index "company_fields", ["company_id"], name: "index_company_fields_on_company_id", using: :btree
 
   create_table "founders", force: :cascade do |t|
-    t.string   "name"
-    t.text     "background"
-    t.integer  "level"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "category"
+    t.string   "name",       limit: 255
+    t.text     "background", limit: 65535
+    t.integer  "level",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "category",   limit: 255
   end
 
   create_table "investors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "category"
-    t.string   "location"
-    t.string   "field"
-    t.text     "detail"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "level"
+    t.string   "name",       limit: 255
+    t.string   "category",   limit: 255
+    t.string   "location",   limit: 255
+    t.string   "field",      limit: 255
+    t.text     "detail",     limit: 65535
+    t.integer  "company_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "level",      limit: 4
   end
 
-  add_index "investors", ["company_id"], name: "index_investors_on_company_id"
+  add_index "investors", ["company_id"], name: "index_investors_on_company_id", using: :btree
 
 end
