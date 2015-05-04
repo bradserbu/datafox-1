@@ -5,9 +5,15 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: datafox_production
   pool: 5
   timeout: 5000
+  username: root
+  password: read4k
+  host: localhost
 
 development:
   <<: *default
