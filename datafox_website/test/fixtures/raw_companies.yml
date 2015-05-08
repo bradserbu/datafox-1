@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location: MyString
+  founded: MyString
+  team: MyString
+  investor: MyString
+  field: MyString
+  buzimodel: MyString
+  url: MyString
+  stage: MyString
+  news: MyText
+  source: MyString
+  desc: MyText
+
+two:
+  name: MyString
+  location: MyString
+  founded: MyString
+  team: MyString
+  investor: MyString
+  field: MyString
+  buzimodel: MyString
+  url: MyString
+  stage: MyString
+  news: MyText
+  source: MyString
+  desc: MyText

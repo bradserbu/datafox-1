@@ -30,10 +30,10 @@ class CompaniesController < ApplicationController
 
     fieldArr = Array.new
     @fields.each do |field| 
-      find_field = Investor.find_by_name(field)
+      find_field = CompanyField.find_by_name(field)
       if find_field.nil?
-        field = Field.new
-        field.name = investor
+        field = CompanyField.new
+        field.name = field
         field.save
         fieldArr << field
       else
@@ -79,7 +79,7 @@ class CompaniesController < ApplicationController
       company.category = company_params[:category]
       company.year = company_params[:year]
       company.stage = company_params[:stage]
-      company.field = fieldArr
+      company.company_fields = fieldArr
       company.detail = company_params[:detail]
       company.investors = investorArr
       return company
